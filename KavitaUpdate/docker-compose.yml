@@ -1,0 +1,30 @@
+version: '2'
+services:
+    mysql:
+        image: mysql/mysql-server
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD
+            - MYSQL_DATABASE=lidarrupdate
+            - MYSQL_USER=root
+            - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        volumes:
+          - ./my.cnf:/etc/my.cnf
+            
+    lidarrupdate:
+        build: .
+        restart: always
+        ports:
+            - "5000:5000"
+
+        links:
+            - mysql
+
+        environment:
+            - Lidarr:DataDirectory=/data
+            - Lidarr:Database=server=mysql;user id=root;password=${MYSQL_ROOT_PASSWORD};database=lidarrupdate;CharSet=utf8mb4
+            - Lidarr:ApiKey=
+            - ASPNETCORE_URLS=http://0.0.0.0:5000
+
+        volumes:
+            - ./lidarrupdate-data:/data
