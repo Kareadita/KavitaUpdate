@@ -2,7 +2,7 @@
 
 
 
-This is the update API of [https://github.com/Kareadita/Kavita](https://github.com/Lidarr/Lidarr). The API is forked from [Radarr's update server](https://github.com/Radarr/RadarrAPI.Update)
+This is the update API of [https://github.com/Kareadita/Kavita](https://github.com/Kareadita/Kavita). The API is forked from [Radarr's update server](https://github.com/Radarr/RadarrAPI.Update)
 
 ## Development
 
